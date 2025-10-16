@@ -1,0 +1,20 @@
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+bin/
+obj/
+
+# Rider IDE
+.idea/
+
+# Resharper
+*.DotSettings.user
+
+# Other files you don’t want to track
+*.log
+*.vsix
