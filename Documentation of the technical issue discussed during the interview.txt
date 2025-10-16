@@ -1,0 +1,29 @@
+Technical Analysis: Delete User by First Name (Case-Insensitive)
+
+The feature is not ready for production release. The current implementation does not take into account case-insensitivity when deleting users,
+while also fails to remove every user with the specified first name.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+Issues Identified:
+
+1.	The following condition only matches exact case strings, violating the case-insensitivity requirement:
+
+	if (this.users[i].firstName === this.firstName)
+
+2.	Iterating through the array using a for loop, while removing elements during the iteration, results in skipping elements,
+	due to array indices shift.
+	
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+Refactoring Proposed:
+
+1. Perform case-insensitive comparison by using .toLowerCase() to match strings.
+
+2. Use Array.filter() for array mutation, to avoid iteration complexity.
+
+The following line of code addresses both issues, while keeping the code clean and simple:
+
+	this.users = this.users.filter(
+		(user) => user.firstName.toLowerCase() !== this.firstName?.toLowerCase()
+	);
