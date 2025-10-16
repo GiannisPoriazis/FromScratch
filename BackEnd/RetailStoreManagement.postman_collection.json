@@ -1,0 +1,1013 @@
+{
+	"info": {
+		"_postman_id": "5154083d-5026-4019-8e15-775298b66a2c",
+		"name": "RetailStoreManagement",
+		"description": "**Retail Store Management API** demonstrates the functionality of a simple **API** built with **.NET 8** and **MSSQL**.\n\nThe API provides endpoints for managing **Products**, **Customers**, and **Purchases**, allowing the store owner to track and manage all sales operations.\n\nThe API implements:\n\n- Proper RESTful resource design\n    \n- Usage of standard HTTP methods\n    \n- Data relationships between entities\n    \n\nNo authentication is required, since the application is only available to the store owner.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49319495",
+		"_collection_link": "https://ioannis-poriazis-1069619.postman.co/workspace/Giannis's-Workspace~f9899d3f-951a-41a2-8b62-556812052c90/collection/49319495-5154083d-5026-4019-8e15-775298b66a2c?action=share&source=collection_link&creator=49319495"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "Customer",
+					"item": [
+						{
+							"name": "/api/Customer/:id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/Customer/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Customer",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "49"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "204 No Content",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Customer/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Customer",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "6"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "409 Conflict",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Customer/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Customer",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"status": "Conflict",
+									"code": 409,
+									"_postman_previewlanguage": "",
+									"header": [],
+									"cookie": [
+										{
+											"expires": "Invalid Date",
+											"domain": "",
+											"path": ""
+										}
+									],
+									"body": "Customer cannot be deleted. Purchases related to the customer were found.\r\n"
+								},
+								{
+									"name": "404 Not Found",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Customer/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Customer",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "49"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "",
+									"header": [],
+									"cookie": [
+										{
+											"expires": "Invalid Date",
+											"domain": "",
+											"path": ""
+										}
+									],
+									"body": "{\r\n    \"type\": \"https://tools.ietf.org/html/rfc9110#section-15.5.5\",\r\n    \"title\": \"Not Found\",\r\n    \"status\": 404,\r\n    \"traceId\": \"00-958b7b42c031e07e3294cda1360021b9-80bb06d7338e3a15-00\"\r\n}"
+								}
+							]
+						},
+						{
+							"name": "/api/Customer/:id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/Customer/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Customer",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "49"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "200 OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/Customer/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Customer",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "2"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Oct 2025 11:40:32 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Kestrel"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 2,\n    \"fullName\": \"Giannis Poriazis\",\n    \"email\": \"giannisporiazis@gmail.com\"\n}"
+								},
+								{
+									"name": "404 Not Found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/Customer/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Customer",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "49"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "/api/Customer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"fullName\": \"string\",\n  \"email\": \"string\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/Customer",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Customer"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "201 Created",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"fullName\": \"Giannis Test\",\n  \"email\": \"testemail@mail.com\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Customer",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Customer"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 6,\n    \"fullName\": \"Giannis Test\",\n    \"email\": \"testemail@mail.com\"\n}"
+								}
+							]
+						},
+						{
+							"name": "/api/Customer",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"fullName\": \"string\",\n  \"id\": 454,\n  \"email\": \"yrSMQJ3UsyyTh3@lZuvvfT.sx\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/Customer",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Customer"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "204 No Content",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"fullName\": \"Giannis Test New\",\n  \"id\": 6,\n  \"email\": \"giannistest@mail.com\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Customer",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Customer"
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Product",
+					"item": [
+						{
+							"name": "/api/Product/:sku",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/Product/:sku",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Product",
+										":sku"
+									],
+									"variable": [
+										{
+											"key": "sku",
+											"value": "string"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "204 No Content",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Product/:sku",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Product",
+												":sku"
+											],
+											"variable": [
+												{
+													"key": "sku",
+													"value": "3736A8FA"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/api/Product/:sku",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/Product/:sku",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Product",
+										":sku"
+									],
+									"variable": [
+										{
+											"key": "sku",
+											"value": "string"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "200 OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/Product/:sku",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Product",
+												":sku"
+											],
+											"variable": [
+												{
+													"key": "sku",
+													"value": "3736A8FA"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"sku\": \"3736A8FA\",\n    \"title\": \"Test Product\",\n    \"price\": 10.00\n}"
+								},
+								{
+									"name": "404 Not Found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/Product/:sku",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Product",
+												":sku"
+											],
+											"variable": [
+												{
+													"key": "sku",
+													"value": "test"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "",
+									"header": [],
+									"cookie": [
+										{
+											"expires": "Invalid Date",
+											"domain": "",
+											"path": ""
+										}
+									],
+									"body": "{\r\n    \"type\": \"https://tools.ietf.org/html/rfc9110#section-15.5.5\",\r\n    \"title\": \"Not Found\",\r\n    \"status\": 404,\r\n    \"traceId\": \"00-d0087c149a3cabef346e010be5602291-af9ca1c490e3989a-00\"\r\n}"
+								}
+							]
+						},
+						{
+							"name": "/api/Product",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"title\": \"string\",\n  \"sku\": \"string\",\n  \"price\": 7599.37748149003\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/Product",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Product"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "201 Created",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"title\": \"Test Product\",\n  \"sku\": \"Not Needed\",\n  \"price\": 10\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Product",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Product"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"sku\": \"3736A8FA\",\n    \"title\": \"Test Product\",\n    \"price\": 10\n}"
+								}
+							]
+						},
+						{
+							"name": "/api/Product",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"title\": \"string\",\n  \"sku\": \"string\",\n  \"price\": 7599.37748149003\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/Product",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Product"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "204 No Content",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"title\": \"New Product Name\",\n  \"sku\": \"3736A8FA\",\n  \"price\": 15\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Product",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Product"
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Purchase",
+					"item": [
+						{
+							"name": "/api/Purchase/:id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/Purchase/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Purchase",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "49"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "200 OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/Purchase/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Purchase",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "6"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Oct 2025 11:58:40 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Kestrel"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 6,\n    \"purchaseDate\": \"2025-10-16T11:57:46.8488071\",\n    \"customerId\": 4,\n    \"purchaseProducts\": [\n        {\n            \"purchaseId\": 6,\n            \"productId\": \"4DFE705A\",\n            \"quantity\": 2\n        },\n        {\n            \"purchaseId\": 6,\n            \"productId\": \"FEEEBD8F\",\n            \"quantity\": 5\n        }\n    ]\n}"
+								},
+								{
+									"name": "404 Not Found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/Purchase/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Purchase",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "49"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "",
+									"header": [],
+									"cookie": [
+										{
+											"expires": "Invalid Date",
+											"domain": "",
+											"path": ""
+										}
+									],
+									"body": "{\r\n    \"type\": \"https://tools.ietf.org/html/rfc9110#section-15.5.5\",\r\n    \"title\": \"Not Found\",\r\n    \"status\": 404,\r\n    \"traceId\": \"00-230fee1d497c94f67043bd2a3f1f6fc9-592a3615eb9a95d3-00\"\r\n}"
+								}
+							]
+						},
+						{
+							"name": "/api/Purchase",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"customerId\": 8329,\n  \"purchaseProducts\": [\n    {\n      \"productId\": \"string\",\n      \"quantity\": 2191\n    },\n    {\n      \"productId\": \"string\",\n      \"quantity\": 6538\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/Purchase",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Purchase"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "201 Created",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"customerId\": 4,\n  \"purchaseProducts\": [\n    {\n      \"productId\": \"4DFE705A\",\n      \"quantity\": 2\n    },\n    {\n      \"productId\": \"FEEEBD8F\",\n      \"quantity\": 5\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Purchase",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Purchase"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Oct 2025 11:57:46 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Kestrel"
+										},
+										{
+											"key": "Location",
+											"value": "https://localhost:7040/api/Purchase/6"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 6,\n    \"purchaseDate\": \"2025-10-16T11:57:46.8488071\",\n    \"customerId\": 4,\n    \"purchaseProducts\": [\n        {\n            \"purchaseId\": 6,\n            \"productId\": \"4DFE705A\",\n            \"quantity\": 2\n        },\n        {\n            \"purchaseId\": 6,\n            \"productId\": \"FEEEBD8F\",\n            \"quantity\": 5\n        }\n    ]\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "/"
+		}
+	]
+}
