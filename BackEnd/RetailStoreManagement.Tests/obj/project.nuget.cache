@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9DSAPaOt9vU=",
+  "dgSpecHash": "Nl9Tk+479B8=",
   "success": true,
-  "projectFilePath": "C:\\Users\\giann\\source\\repos\\RetailStoreManagement.Tests\\RetailStoreManagement.Tests.csproj",
+  "projectFilePath": "C:\\Users\\giann\\source\\repos\\FromScratch\\BackEnd\\RetailStoreManagement.Tests\\RetailStoreManagement.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\giann\\.nuget\\packages\\automapper\\13.0.0\\automapper.13.0.0.nupkg.sha512",
     "C:\\Users\\giann\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
@@ -123,13 +123,22 @@
       "code": "NU1608",
       "level": "Warning",
       "message": "Detected package version outside of dependency constraint: AutoMapper.Extensions.Microsoft.DependencyInjection 12.0.1 requires AutoMapper (= 12.0.1) but version AutoMapper 13.0.0 was resolved.",
-      "projectPath": "C:\\Users\\giann\\source\\repos\\RetailStoreManagement.Tests\\RetailStoreManagement.Tests.csproj",
+      "projectPath": "C:\\Users\\giann\\source\\repos\\FromScratch\\BackEnd\\RetailStoreManagement.Tests\\RetailStoreManagement.Tests.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\giann\\source\\repos\\RetailStoreManagement.Tests\\RetailStoreManagement.Tests.csproj",
+      "filePath": "C:\\Users\\giann\\source\\repos\\FromScratch\\BackEnd\\RetailStoreManagement.Tests\\RetailStoreManagement.Tests.csproj",
       "libraryId": "AutoMapper",
       "targetGraphs": [
         "net8.0"
       ]
+    },
+    {
+      "code": "NU1900",
+      "level": "Warning",
+      "message": "Error occurred while getting package vulnerability data: Unable to load the service index for source https://api.nuget.org/v3/index.json.",
+      "projectPath": "C:\\Users\\giann\\source\\repos\\FromScratch\\BackEnd\\RetailStoreManagement.Tests\\RetailStoreManagement.Tests.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\giann\\source\\repos\\FromScratch\\BackEnd\\RetailStoreManagement.Tests\\RetailStoreManagement.Tests.csproj",
+      "targetGraphs": []
     }
   ]
 }

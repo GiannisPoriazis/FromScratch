@@ -109,7 +109,7 @@ export class ContactComponent {
       address: fullAddress,
       city: city,
       postalCode: suggestion.address?.postcode || ''
-    });
+    }, { emitEvent: false });
 
     this.showSuggestions = false;
   }

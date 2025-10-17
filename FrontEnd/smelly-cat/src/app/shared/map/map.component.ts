@@ -26,8 +26,10 @@ export class MapComponent implements AfterViewInit {
       attributionControl: false
     }).setView([this.latitude, this.longitude], this.zoom);
     
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19
+    // Using CartoDB Positron for a cleaner, minimal look
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      maxZoom: 19,
+      subdomains: 'abcd'
     }).addTo(this.map);
   }
 }
