@@ -17,7 +17,7 @@
 					<div class="mb-6 md:mb-10">
 						<label for="fullName" class="text-[#7f8387] block text-sm/6 font-medium">Full Name*</label>
 						<div class="mt-2">
-							<div class="flex items-center rounded-md outline-1 -outline-offset-1 outline-gray-300 has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 has-[input:focus-within]:outline-indigo-300">
+							<div [class.invalid]="contactForm.get('fullName')?.invalid && (contactForm.get('fullName')?.touched || contactForm.get('fullName')?.dirty)" class="flex items-center rounded-md outline-1 -outline-offset-1 outline-gray-300 has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 has-[input:focus-within]:outline-indigo-300">
 								<input id="fullName" type="text" placeholder="Type your name.." formControlName="fullName" class="block grow rounded-md py-1.5 px-3 text-base bg-white placeholder:text-gray-400 focus:outline-none sm:text-sm/6 font-normal" />
 							</div>
 						</div>
@@ -25,7 +25,7 @@
 					<div class="mb-6 md:mb-10">
 						<label for="email" class="text-[#7f8387] block text-sm/6 font-medium">Email*</label>
 						<div class="mt-2">
-							<div class="flex items-center rounded-md outline-1 -outline-offset-1 outline-gray-300 has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 has-[input:focus-within]:outline-indigo-300">
+							<div [class.invalid]="contactForm.get('email')?.invalid && (contactForm.get('email')?.touched || contactForm.get('email')?.dirty)" class="flex items-center rounded-md outline-1 -outline-offset-1 outline-gray-300 has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 has-[input:focus-within]:outline-indigo-300">
 								<input id="email" type="email" placeholder="Type your email.." formControlName="email" class="block grow rounded-md py-1.5 px-3 text-base bg-white placeholder:text-gray-400 focus:outline-none sm:text-sm/6 font-normal" />
 							</div>
 						</div>

@@ -39,3 +39,7 @@ body {
 .active {
   color: var(--secondary-color);
 }
+
+.invalid {
+  outline-color: red;
+}
