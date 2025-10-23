@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using RetailStoreManagement.Models;
 using RetailStoreManagement.Interfaces;
+using System;
 
 namespace RetailStoreManagement.Services
 {
@@ -39,12 +40,16 @@ namespace RetailStoreManagement.Services
             var customer = await _context.Customers.FindAsync(id);
             if (customer == null) return DeleteResult.NotFound;
 
-            var hasPurchases = await _context.Purchases.AnyAsync(p => p.CustomerId == id);
-            if (hasPurchases) return DeleteResult.HasPurchases;
-
             _context.Customers.Remove(customer);
-            await _context.SaveChangesAsync();
-            return DeleteResult.Deleted;
+            try
+            {
+                await _context.SaveChangesAsync();
+                return DeleteResult.Deleted;
+            }
+            catch (DbUpdateException ex)
+            {
+                return DeleteResult.HasPurchases;
+            }
         }
     }
 }

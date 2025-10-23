@@ -29,6 +29,12 @@ namespace RetailStoreManagement
                 .HasOne(pp => pp.Product)
                 .WithMany()
                 .HasForeignKey(pp => pp.ProductId);
+
+            modelBuilder.Entity<Purchase>()
+                .HasOne(p => p.Customer)
+                .WithMany(c => c.Purchases)
+                .HasForeignKey(p => p.CustomerId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

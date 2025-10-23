@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace RetailStoreManagement.Models
 {
@@ -13,6 +14,9 @@ namespace RetailStoreManagement.Models
 
         [EmailAddress]
         public string? Email { get; set; }
+
+        // Navigation property: a customer can have many purchases
+        public ICollection<Purchase> Purchases { get; set; } = new List<Purchase>();
     }
 
     public class CustomerDto

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace RetailStoreManagement.Models
 {
@@ -12,6 +13,8 @@ namespace RetailStoreManagement.Models
 
         [Required]
         public int CustomerId { get; set; }
+
+        public Customer? Customer { get; set; }
 
         public ICollection<PurchaseProduct> PurchaseProducts { get; set; } = new List<PurchaseProduct>();
     }
