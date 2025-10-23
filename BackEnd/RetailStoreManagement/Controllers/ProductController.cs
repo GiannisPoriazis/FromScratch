@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using RetailStoreManagement.Models;
+using RetailStoreManagement.Interfaces;
 
 namespace RetailStoreManagement.Controllers
 {
@@ -8,64 +8,44 @@ namespace RetailStoreManagement.Controllers
     [Route("api/[controller]")]
     public class ProductController : ControllerBase
     {
-        private readonly RetailStoreContext _context;
+        private readonly IProductService _service;
 
-        public ProductController(RetailStoreContext context)
+        public ProductController(IProductService service)
         {
-            _context = context;
+            _service = service;
         }
 
         [HttpGet("{sku}")]
         public async Task<ActionResult<Product>> GetProduct(string sku)
         {
-            var product = await _context.Products.FindAsync(sku);
+            var product = await _service.GetBySkuAsync(sku);
             return product == null ? NotFound() : product;
         }
 
         [HttpPost]
         public async Task<ActionResult<Product>> CreateProduct(Product product)
         {
-            string sku;
-
-            do
-            {
-                sku = GenerateSKU();
-            } 
-            while (await _context.Products.AnyAsync(p => p.SKU == sku));
-
-            product.SKU = sku;
-
-            _context.Products.Add(product);
-            await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetProduct), new { sku = product.SKU }, product);
+            var created = await _service.CreateAsync(product);
+            return CreatedAtAction(nameof(GetProduct), new { sku = created.SKU }, created);
         }
 
         [HttpPut]
         public async Task<ActionResult> UpdateProduct(Product product)
         {
-            _context.Entry(product).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+            await _service.UpdateAsync(product);
             return NoContent();
         }
 
         [HttpDelete("{sku}")]
         public async Task<ActionResult> DeleteProduct(string sku)
         {
-            var product = await _context.Products.FindAsync(sku);
-
-            if (product == null)
+            var result = await _service.DeleteAsync(sku);
+            return result switch
             {
-                return NotFound();
-            }
-
-            _context.Products.Remove(product);
-            await _context.SaveChangesAsync();
-            return NoContent();
-        }
-
-        private string GenerateSKU()
-        {
-            return Guid.NewGuid().ToString("N").Substring(0, 8).ToUpper();
+                DeleteResult.NotFound => NotFound(),
+                DeleteResult.Deleted => NoContent(),
+                _ => StatusCode(500)
+            };
         }
     }
 }

@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using RetailStoreManagement;
 using AutoMapper;
+using RetailStoreManagement.Services;
+using RetailStoreManagement.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +21,10 @@ var mappingConfig = new MapperConfiguration(mc =>
 IMapper mapper = mappingConfig.CreateMapper();
 builder.Services.AddSingleton(mappingConfig);
 builder.Services.AddSingleton(mapper);
+
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IPurchaseService, PurchaseService>();
 
 var app = builder.Build();
 

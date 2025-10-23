@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using RetailStoreManagement.Models;
-using AutoMapper;
-using AutoMapper.QueryableExtensions;
+using RetailStoreManagement.Interfaces;
 
 namespace RetailStoreManagement.Controllers
 {
@@ -10,83 +8,35 @@ namespace RetailStoreManagement.Controllers
     [Route("api/[controller]")]
     public class PurchaseController : ControllerBase
     {
-        private readonly RetailStoreContext _context;
-        private readonly IMapper _mapper;
+        private readonly IPurchaseService _service;
 
-        public PurchaseController(RetailStoreContext context, IMapper mapper)
+        public PurchaseController(IPurchaseService service)
         {
-            _context = context;
-            _mapper = mapper;
+            _service = service;
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<PurchaseDto>> GetPurchases(int id)
         {
-            var purchase = await _context.Purchases
-                .AsNoTracking()
-                .Where(p => p.Id == id)
-                .ProjectTo<PurchaseDto>(_mapper.ConfigurationProvider)
-                .FirstOrDefaultAsync();
-
-            if (purchase == null)
-            {
-                return NotFound();
-            }
-
-            return purchase;
+            var purchase = await _service.GetByIdAsync(id);
+            return purchase == null ? NotFound() : purchase;
         }
 
         [HttpPost]
         public async Task<ActionResult<PurchaseDto>> CreatePurchase(PurchaseCreateDto createDto)
         {
-            if (createDto == null)
+            var (created, error, missing) = await _service.CreateAsync(createDto);
+
+            if (error != null)
             {
-                return BadRequest();
+                if (error.StartsWith("Customer "))
+                    return NotFound(error);
+
+                if (missing != null && missing.Any())
+                    return BadRequest(new { message = error, missing });
+
+                return BadRequest(error);
             }
-
-            if (createDto.PurchaseProducts.Any(pp => pp.Quantity <= 0))
-            {
-                return BadRequest("Quantity must be at least 1 for purchase products.");
-            }
-
-            var customerExists = await _context.Customers.AnyAsync(c => c.Id == createDto.CustomerId);
-
-            if (!customerExists)
-            {
-                return NotFound($"Customer {createDto.CustomerId} not found.");
-            }
-
-            var productIds = createDto.PurchaseProducts.Select(x => x.ProductId).Distinct().ToList();
-
-            var existing = await _context.Products
-                .Where(p => productIds.Contains(p.SKU))
-                .Select(p => p.SKU)
-                .ToListAsync();
-
-            var missing = productIds.Except(existing).ToList();
-
-            if (missing.Any())
-            {
-                return BadRequest(new { message = "Some of the products were not found.", missing });
-            }
-
-            var purchase = _mapper.Map<Purchase>(createDto);
-
-            if(purchase == null)
-            {
-                return BadRequest();
-            }
-
-            purchase.PurchaseDate = DateTime.UtcNow;
-
-            _context.Purchases.Add(purchase);
-            await _context.SaveChangesAsync();
-
-            var created = await _context.Purchases
-                .AsNoTracking()
-                .Where(p => p.Id == purchase.Id)
-                .ProjectTo<PurchaseDto>(_mapper.ConfigurationProvider)
-                .FirstOrDefaultAsync();
 
             return CreatedAtAction(nameof(GetPurchases), new { id = created!.Id }, created);
         }
